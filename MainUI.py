@@ -75,7 +75,7 @@ Maps_frame.grid(row=3, column=0, padx=10, pady=5, sticky=NSEW)
 Tasks_frame = Frame(right_frame, width=230, height=120, bg='blue')
 Tasks_frame.grid(row=4, column=0, padx=10, pady=5, sticky=NSEW)
 
-Label(Tasks_frame, text= "Quick Tasks", font= ('Helvetica 20'), fg='black', bg= 'blue').grid(row=0, column=0, padx= (45, 25),  pady=(5,0))
+Label(Tasks_frame, text= "Quick Tasks", font= ('Helvetica 20'), fg='black', bg= 'blue').grid(row=0, column=0, padx= (35, 25),  pady=(5,0))
 
 Label(Tasks_frame, text= "How long to work", font= ('Helvetica 12'), fg='black', bg= 'blue').grid(row=1, column=0,padx= (10, 0), pady=(5, 2))
 Label(Tasks_frame, text= "Weather tonight", font= ('Helvetica 12'), fg='black', bg= 'blue').grid(row=2, column=0,padx= (10, 0), pady=(5, 2))
