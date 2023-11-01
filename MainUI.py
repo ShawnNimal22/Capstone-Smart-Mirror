@@ -1,5 +1,8 @@
 from tkinter import *
 import time
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 def update_time():
     current_time = time.strftime('%H:%M:%S')
@@ -99,4 +102,33 @@ Label(tool_bar, text="Exposure").grid(row=5, column=0, padx=5, pady=5)  """
 if __name__ == "__main__":
     update_time()
     root.mainloop()
+
+smtp_server = 'smtp.gmail.com'
+port = 587
+email = 'shawnb.nimal22@gmail.com'  # Replace with your Gmail address
+password = 'awbm bany eowy mqqe'  # Replace with your Gmail password
+
+# Create the email message
+subject = 'Hello from Python'
+message = 'This is a test email from Python.'
+sender = email
+receiver = 'shawn.nimal@gmail.com'  # Your Gmail address
+
+msg = MIMEMultipart()
+msg['From'] = sender
+msg['To'] = receiver
+msg['Subject'] = subject
+msg.attach(MIMEText(message, 'plain'))
+
+# Connect to the Gmail SMTP server and send the email
+try:
+    server = smtplib.SMTP(smtp_server, port)
+    server.starttls()
+    server.login(email, password)
+    server.sendmail(sender, receiver, msg.as_string())
+    print('Email sent successfully')
+    server.quit()
+except Exception as e:
+    print(f'Error sending email: {str(e)}')
+
     
