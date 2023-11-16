@@ -99,4 +99,32 @@ Label(tool_bar, text="Exposure").grid(row=5, column=0, padx=5, pady=5)  """
 if __name__ == "__main__":
     update_time()
     root.mainloop()
-    
+
+
+
+import vonage
+
+def send_sms(api_key, api_secret, from_number, to_number, message):
+    client = vonage.Client(key=api_key, secret=api_secret)
+    sms = vonage.Sms(client)
+
+    response = sms.send_message({
+        'from': from_number,
+        'to': to_number,
+        'text': message,
+    })
+
+    if response['messages'][0]['status'] == '0':
+        print("Message sent successfully.")
+    else:
+        print(f"Message failed with error: {response['messages'][0]['error-text']}")
+
+# Replace the following variables with your own details
+api_key = 'cfed9634'            # Your Vonage API key
+api_secret = 'XjlMjmOizlm3HYNg'      # Your Vonage API secret
+from_number = '15193426422'  # Your Vonage phone number in international format
+to_number = '16479269773'    # Your friend's phone number in international format
+message = 'Hello from Python!'      # The message you want to send
+
+send_sms(api_key, api_secret, from_number, to_number, message)
+
